@@ -1,0 +1,23 @@
+name: Java Workflow
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Build Java program
+      run: |
+        javac MyJavaProgram.java
+
+    - name: Run Java program
+      run: java MyJavaProgram
