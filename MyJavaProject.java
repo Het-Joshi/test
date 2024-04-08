@@ -30,7 +30,7 @@ class Linkedlist {
 }
 
 
-public class Main {
+public class MyJavaProject {
     public static void main(String[] args) {
         LinkedList myList = new LinkedList();
         
