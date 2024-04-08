@@ -1,67 +1,53 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+class Node {
+    int data;
+    Node next;
 
-public class ThemeParkQueueSimulation {
+    // Constructor to initialize a node with data
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+
+// Linked list class containing operations for adding elements
+class Linkedlist {
+    Node head;
+
+    // Method to add elements to the linked list
+    public void add(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+}
+
+
+public class Main {
     public static void main(String[] args) {
-        try (Scanner scanner = new Scanner(System.in)) {
-			Queue<String> themeParkQueue = new LinkedList<>();
+        LinkedList myList = new LinkedList();
+        
+        // Insert elements into the linked list
+        myList.insert(5);
+        myList.insert(10);
+        myList.insert(15);
 
-			System.out.println("Welcome to the Theme Park Queue Simulation!");
-			System.out.println("You are at the entrance of the theme park.");
+        // Display the elements of the linked list
+        System.out.print("Linked list: ");
+        myList.display(); // Output: Linked list: 15 10 5
 
-			while (true) {
-			    System.out.println("\nMenu:");
-			    System.out.println("1. Join the queue");
-			    System.out.println
-			    ("2. Check the queue length");
-			    System.out.println
-			    ("3. Let the next person enter");
-			    System.out.println
-			    ("4. Exit the theme park");
+        // Delete an element from the linked list
+        myList.delete(10);
 
-			    System.out.print("Enter your choice: ");
-			    int choice = scanner.nextInt();
-
-			    switch (choice) {
-			        case 1:
-			            scanner.nextLine(); 
-			            // Consume newline character
-			            System.out.print
-			            ("Enter your name to join the queue: ");
-			            String name = scanner.nextLine();
-			            themeParkQueue.offer(name);
-			            System.out.println(name + 
-			            		" has joined the queue!");
-			            break;
-			        case 2:
-			            System.out.println
-			            ("Current queue length: " + 
-			            themeParkQueue.size());
-			            break;
-			        case 3:
-			            if (!themeParkQueue.isEmpty()) {
-			                String nextPerson = 
-			                		themeParkQueue.poll();
-			                System.out.println(nextPerson 
-			                		+ " is entering the "
-			                		+ "theme park!");
-			            } else {
-			                System.out.println
-			                ("The queue is empty. "
-			                		+ "No one to let in!");
-			            }
-			            break;
-			        case 4:
-			            System.out.println
-			            ("Exiting the theme park queue "
-			            		+ "simulation. Goodbye!");
-			            System.exit(0);
-			        default:
-			            System.out.println
-			            ("Invalid choice. Please try again.");
-			    }
-			}
-		}
+        // Display the elements of the linked list after deletion
+        System.out.print("Linked list after deletion: ");
+        myList.display(); // Output: Linked list after deletion: 15 5
     }
 }
